@@ -1,0 +1,28 @@
+{
+  "name": "api_praiagrande_adress",
+  "version": "1.0.0",
+  "description": "API REST para estudos e prática, manipulando alguns endereços da minha cidade. Techs: Node.js, MySQL (ORM Sequelize), testes feitos com POSTMAN",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelipeLeonardo98/API_PraiaGrande_ADRESS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FelipeLeonardo98/API_PraiaGrande_ADRESS/issues"
+  },
+  "homepage": "https://github.com/FelipeLeonardo98/API_PraiaGrande_ADRESS#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "http-status": "^1.4.2",
+    "mysql2": "^2.2.2",
+    "nodemon": "^2.0.4",
+    "sequelize": "^6.3.5"
+  }
+}
