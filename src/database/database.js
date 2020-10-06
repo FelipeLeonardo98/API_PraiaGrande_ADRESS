@@ -16,5 +16,5 @@ const sequelize = new Sequelize(
     }
 );
 
-console.log('Conectado');
+
 module.exports = sequelize;

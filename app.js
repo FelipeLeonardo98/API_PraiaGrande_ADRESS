@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 
 // verify table at db_usuario and starting node server
 sequelize.sync({ force: false }).then(() => {
-    const port = 5001;
+    const port = 8081;
     app.set("port", port);
     const server = http.createServer(app);
     server.listen(port);

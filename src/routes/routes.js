@@ -6,4 +6,5 @@ const router = express.Router();
 router.post('/district', DistrictController.Insert);
 router.get('/district', DistrictController.SelectAll);
 
+
 module.exports = router;
