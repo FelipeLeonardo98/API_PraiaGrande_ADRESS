@@ -2,6 +2,7 @@
 const Sequelize = require('sequelize');
 // getting object sequelize WITH seetings of connection
 const sequelize = require('../database/database.js');
+const Street = require('./street.js');
 
 const District = sequelize.define("district", {
     id_district: {
@@ -18,6 +19,8 @@ const District = sequelize.define("district", {
         type: Sequelize.STRING(45),
         allowNull: true
     }
+
+
 });
 
 module.exports = District;
