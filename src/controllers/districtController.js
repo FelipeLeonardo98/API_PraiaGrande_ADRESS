@@ -55,7 +55,35 @@ exports.Update = (req, res, next) => {
                     res.status(status.OK).send(`District with id ${id} updated with success`)
                 }).catch(error => next(`Ops Attention! Look the following error: ${error}`))
             } else {
-                res.status(status.NOT_FOUND).send(`Sorry, district with id ${id} not found!`);
+                res.status(status.NOT_FOUND).send(`Sorry, District with id ${id} not found!`);
             }
         }).catch(error => next(`Ops Attention! Look the following error: ${error}`));
+};
+
+// Select * from where id = ...
+exports.SelectOne = (req, res, next) => {
+    const id = req.params.id;
+
+    District.findByPk(id)
+        .then(district => {
+            if (district) {
+                res.status(status.OK).send(district);
+            } else {
+                res.status(status.NOT_FOUND).send(`District with id ${id} not was found.`);
+            }
+        }).catch(error => next(`Warning! Pay attention on following error: ${error}`));
+};
+
+// Select * from table where name = ...
+exports.SelectByName = (req, res, next) => {
+    const search = req.params.search;
+
+    District.findOne({ where: { nm_district: search } })
+        .then(district => {
+            if (district) {
+                res.status(status.OK).send(district);
+            } else {
+                res.status(status.NOT_FOUND).send(`We did not find any district with name ${search}`);
+            }
+        }).catch(error => next(`ATTENTION: ${error} make a contact to Support Squad OR read the API's documentation`));
 };

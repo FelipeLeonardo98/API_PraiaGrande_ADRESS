@@ -2,7 +2,8 @@
 const Sequelize = require('sequelize');
 // getting object sequelize WITH seetings of connection
 const sequelize = require('../database/database.js');
-const Street = require('./street.js');
+//const Street = require('./street.js');
+
 
 const District = sequelize.define("district", {
     id_district: {
@@ -20,7 +21,8 @@ const District = sequelize.define("district", {
         allowNull: true
     }
 
-
 });
 
+//District.hasMany(Street);
+//Street.belongsTo(District);
 module.exports = District;

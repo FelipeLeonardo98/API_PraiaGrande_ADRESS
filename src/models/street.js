@@ -1,4 +1,4 @@
-/*const Sequelize = require('sequelize');
+const Sequelize = require('sequelize');
 const sequelize = require('../database/database.js');
 const District = require('./district');
 
@@ -13,17 +13,12 @@ const Street = sequelize.define("street", {
     nm_street: {
         type: Sequelize.STRING(100),
         allowNull: false
-    },
-    fk_district: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {         // User belongsTo Company 1:1
-            model: 'District',
-            key: 'id_district'
-        }
     }
 
+});
 
-})
+// To creat relational fields, Foreign Key
+District.hasMany(Street);  // 1-N
+Street.belongsTo(District);  //N-1
 
-module.exports = Street;*/
+module.exports = Street;
