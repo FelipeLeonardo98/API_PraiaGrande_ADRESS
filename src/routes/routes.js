@@ -10,6 +10,9 @@ router.put('/district/:id', DistrictController.Update);
 router.get('/district/:id', DistrictController.SelectOne);
 router.get('/district/name/:search', DistrictController.SelectByName);
 
+// Street routes List
+router.post('/street', StreetController.Insert);
+
 // Record's List
 router.get('/record/district/group', DistrictController.DistrictGroup);
 
