@@ -2,6 +2,7 @@
 const status = require('http-status');
 const { NOT_FOUND } = require('http-status');
 const District = require('../models/district');
+const sequelize = require('../database/database');
 
 // "Insert" method
 exports.Insert = (req, res, next) => {
@@ -11,7 +12,6 @@ exports.Insert = (req, res, next) => {
     District.create({
         nm_district: nm_district,
         ds_zone: ds_zone,
-
     })
         .then(district => {
             if (district) {
@@ -85,5 +85,25 @@ exports.SelectByName = (req, res, next) => {
             } else {
                 res.status(status.NOT_FOUND).send(`We did not find any district with name ${search}`);
             }
-        }).catch(error => next(`ATTENTION: ${error} make a contact to Support Squad OR read the API's documentation`));
+        }).catch(error => next(`ATTENTION: ${error} . Do a contact to Support Squad OR read the API's documentation`));
 };
+
+exports.DistrictGroup = async (req, res, next) => {
+    // Without async/await
+    /*sequelize.query('SELECT * FROM vw_zoneGroup;')
+        .then(result => {
+            if (result) {
+                res.status(status.OK).send(result);
+            } else {
+                res.status(status.NOT_FOUND).send(`Sorry, we did not any result at this requision`);
+            }
+        }).catch(error => next(`ATTENTION: ${error} . Do a contact to Support Squad OR read the API's documentation`));
+        */
+    //With async/await
+    const [result] = await sequelize.query('SELECT * FROM vw_zoneGroup;');
+    if (result) {
+        res.status(status.OK).send(result);
+    } else {
+        res.status(status.NOT_FOUND).send(`Sorry, we did not any result at this requision`);
+    }
+}; 
