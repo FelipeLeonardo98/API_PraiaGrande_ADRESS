@@ -23,6 +23,5 @@ const District = sequelize.define("district", {
 
 });
 
-//District.hasMany(Street);
-//Street.belongsTo(District);
+
 module.exports = District;
