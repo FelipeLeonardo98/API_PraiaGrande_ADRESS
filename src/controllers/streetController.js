@@ -5,6 +5,7 @@ const sequelize = require('../database/database');
 const District = require('../models/district');
 const Street = require('../models/street');
 
+// insert street
 exports.Insert = async (req, res, next) => {
     const newStreet = req.body.nm_street;
     const districtName = req.body.nm_district;
@@ -44,6 +45,7 @@ exports.Insert = async (req, res, next) => {
 
 };*/
 
+// get all streets
 exports.SelectAll = (req, res, next) => {
     Street.findAll()
         .then(street => {
@@ -53,4 +55,30 @@ exports.SelectAll = (req, res, next) => {
                 res.status(status.NOT_FOUND).send();
             }
         }).catch(error => next(`Wait and pay attention at this error:  ${error}`));
+};
+
+// for all streets and details
+exports.StreetDetails = async (req, res, next) => {
+
+    const [allDetails] = await sequelize.query(`SELECT * FROM vw_streets_districts`);
+
+    if (allDetails) {
+        res.status(status.OK).send(allDetails);
+    } else {
+        res.status(status.NOT_FOUND).send(`Sorry, we did not any result at this requision`);
+    }
+
+};
+
+// For search by street name
+exports.SearchName = async (req, res, next) => {
+    const searchByName = req.params.searchName;
+    const allStreets = await sequelize.query(`SELECT * FROM vw_streets_districts where Street = "${searchByName}" `);
+
+    if (allStreets) {
+        res.status(status.OK).send(allStreets[0]);
+    } else {
+        res.status(status.NOT_FOUND).send();
+    }
+
 };

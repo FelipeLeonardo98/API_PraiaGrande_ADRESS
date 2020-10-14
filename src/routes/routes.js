@@ -13,6 +13,8 @@ router.get('/district/name/:search', DistrictController.SelectByName);
 // Street routes List
 router.post('/street', StreetController.Insert);
 router.get('/street', StreetController.SelectAll);
+router.get('/street/details', StreetController.StreetDetails);
+router.get('/street/name/:searchName', StreetController.SearchName);
 
 // Record's List
 router.get('/record/district/group', DistrictController.DistrictGroup);

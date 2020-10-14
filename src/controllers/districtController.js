@@ -88,6 +88,7 @@ exports.SelectByName = (req, res, next) => {
         }).catch(error => next(`ATTENTION: ${error} . Do a contact to Support Squad OR read the API's documentation`));
 };
 
+// record district's group
 exports.DistrictGroup = async (req, res, next) => {
     // Without async/await
     /*sequelize.query('SELECT * FROM vw_zoneGroup;')
